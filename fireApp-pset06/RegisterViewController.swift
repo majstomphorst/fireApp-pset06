@@ -20,6 +20,11 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if FIRAuth.auth()?.currentUser?.uid != nil {
+            print("user logedin!!!!!!!")
+        } else {
+            print("no user logedin")
+        }
         // Do any additional setup after loading the view.
     }
 
@@ -63,9 +68,6 @@ class RegisterViewController: UIViewController {
             })
             
         })
-        
-        
-        
         
         
     }

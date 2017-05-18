@@ -14,6 +14,8 @@
 		281A9FE71ECCDA4E00F87E1A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 281A9FE61ECCDA4E00F87E1A /* GoogleService-Info.plist */; };
 		2842277F1ECDC05F0060B064 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2842277E1ECDC05F0060B064 /* RegisterViewController.swift */; };
 		284227821ECDCA170060B064 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 284227801ECDCA170060B064 /* Main.storyboard */; };
+		284227841ECE18600060B064 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284227831ECE18600060B064 /* MessageViewController.swift */; };
+		284227861ECE19FA0060B064 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284227851ECE19FA0060B064 /* Help.swift */; };
 		D8C03626B7609EBFB44CCAC7 /* Pods_fireApp_pset06.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D3676EB71F12BE688E2C37 /* Pods_fireApp_pset06.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +29,8 @@
 		281A9FE61ECCDA4E00F87E1A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2842277E1ECDC05F0060B064 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		284227811ECDCA170060B064 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		284227831ECE18600060B064 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		284227851ECE19FA0060B064 /* Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		74D3676EB71F12BE688E2C37 /* Pods_fireApp_pset06.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fireApp_pset06.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B5D5965AEBAA6433419B450 /* Pods-fireApp-pset06.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fireApp-pset06.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fireApp-pset06/Pods-fireApp-pset06.debug.xcconfig"; sourceTree = "<group>"; };
 		FE37237B11CE996A14799DB4 /* Pods-fireApp-pset06.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fireApp-pset06.release.xcconfig"; path = "Pods/Target Support Files/Pods-fireApp-pset06/Pods-fireApp-pset06.release.xcconfig"; sourceTree = "<group>"; };
@@ -65,11 +69,12 @@
 		281A9FD31ECCD93D00F87E1A /* fireApp-pset06 */ = {
 			isa = PBXGroup;
 			children = (
-				2842277D1ECDA8DF0060B064 /* ViewControllers */,
 				281A9FD41ECCD93D00F87E1A /* AppDelegate.swift */,
-				281A9FDB1ECCD93D00F87E1A /* Assets.xcassets */,
+				2842277D1ECDA8DF0060B064 /* ViewControllers */,
+				284227851ECE19FA0060B064 /* Help.swift */,
 				284227801ECDCA170060B064 /* Main.storyboard */,
 				281A9FDD1ECCD93D00F87E1A /* LaunchScreen.storyboard */,
+				281A9FDB1ECCD93D00F87E1A /* Assets.xcassets */,
 				281A9FE01ECCD93D00F87E1A /* Info.plist */,
 				281A9FE61ECCDA4E00F87E1A /* GoogleService-Info.plist */,
 			);
@@ -79,6 +84,7 @@
 		2842277D1ECDA8DF0060B064 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				284227831ECE18600060B064 /* MessageViewController.swift */,
 				281A9FD61ECCD93D00F87E1A /* LoginViewController.swift */,
 				2842277E1ECDC05F0060B064 /* RegisterViewController.swift */,
 			);
@@ -228,6 +234,8 @@
 			files = (
 				2842277F1ECDC05F0060B064 /* RegisterViewController.swift in Sources */,
 				281A9FD71ECCD93D00F87E1A /* LoginViewController.swift in Sources */,
+				284227861ECE19FA0060B064 /* Help.swift in Sources */,
+				284227841ECE18600060B064 /* MessageViewController.swift in Sources */,
 				281A9FD51ECCD93D00F87E1A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="IgG-Lm-5fe">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -15,7 +15,7 @@
         <!--LoginVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="LoginVC" id="BYZ-38-t0r" customClass="LoginViewController" customModule="fireApp_pset06" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" title="LoginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="fireApp_pset06" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -100,7 +100,29 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="972" y="38.23088455772114"/>
+            <point key="canvasLocation" x="1729" y="-69"/>
+        </scene>
+        <!--MessageVC-->
+        <scene sceneID="n4f-8J-rNZ">
+            <objects>
+                <viewController title="MessageVC" id="lKt-HM-rNa" customClass="MessageViewController" customModule="fireApp_pset06" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hrm-HY-Qi1"/>
+                        <viewControllerLayoutGuide type="bottom" id="zcg-7d-8XS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="s3R-UB-t8v">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="MessageVC" id="san-YF-Wvl"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="toLogin" modalPresentationStyle="pageSheet" modalTransitionStyle="coverVertical" id="nQe-yf-tC1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vDL-uO-Hje" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1729" y="707"/>
         </scene>
         <!--RegisterVC-->
         <scene sceneID="IW4-Ps-et7">
@@ -209,7 +231,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOR-Pl-h8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="K7a-BX-ucj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1730" y="38"/>
+            <point key="canvasLocation" x="2444" y="63"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7bo-z6-Xwx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IgG-Lm-5fe" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4H2-Vw-OR8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lKt-HM-rNa" kind="relationship" relationship="rootViewController" id="GV0-9v-GiW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8t5-P9-10Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="972" y="706.59670164917543"/>
         </scene>
     </scenes>
     <resources>

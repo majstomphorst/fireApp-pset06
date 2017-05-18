@@ -19,19 +19,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        do {
-            try FIRAuth.auth()?.signOut()
-        } catch {
-            print("logout faild")
-        }
-        
-        // if user is not loged in
-        if FIRAuth.auth()?.currentUser?.uid == nil {
-            print("no user logedin")
-        }
-        
         if FIRAuth.auth()?.currentUser?.uid != nil {
             print("user logedin!!!!!!!")
+        } else {
+            print("no user logedin")
         }
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -72,8 +63,6 @@ class LoginViewController: UIViewController {
         
         emailLabel.text = ""
         passwordLabel.text = ""
-        
-        
         
         
     }
