@@ -199,6 +199,9 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vuy-6D-z57">
                                                 <rect key="frame" x="175.5" y="0.0" width="167.5" height="30"/>
                                                 <state key="normal" title="Register"/>
+                                                <connections>
+                                                    <action selector="registerButton:" destination="hbv-i6-5XU" eventType="touchUpInside" id="7Ne-tp-1eu"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -234,13 +237,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="Register login" id="f82-6O-Cg9"/>
                     <connections>
+                        <outlet property="emailLabel" destination="4fx-ma-Jm2" id="unu-dJ-MRA"/>
                         <outlet property="nameLabel" destination="4wr-Ec-PnW" id="jEb-bF-Dae"/>
+                        <outlet property="pass2Label" destination="zk6-2E-Neh" id="e8E-K8-1cS"/>
+                        <outlet property="passLabel" destination="BTc-8Z-U99" id="wTd-Lc-leo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOR-Pl-h8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="K7a-BX-ucj" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1700" y="38"/>
+            <point key="canvasLocation" x="1730" y="38"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="S3n-XZ-5od">
