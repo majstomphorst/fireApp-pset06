@@ -11,14 +11,8 @@ import Firebase
 
 class Help {
     
-    static func statusHandeler() {
-        
-        if FIRAuth.auth()?.currentUser?.uid == nil {
-            
-        }
-        
-        
-        
+    static func status() {
+        // for bebugging
         if FIRAuth.auth()?.currentUser?.uid != nil {
             print("yes login")
         } else {

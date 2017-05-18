@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
         
         FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
             if error != nil {
-                print(error)
+                print(error!)
             }
             
             guard let uid = user?.uid else {
