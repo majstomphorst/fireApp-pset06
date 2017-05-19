@@ -12,18 +12,13 @@ import Firebase
 class LoginViewController: UIViewController {
 
     //MARK: outlets
-
     @IBOutlet weak var emailLabel: UITextField!
     @IBOutlet weak var passwordLabel: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if FIRAuth.auth()?.currentUser?.uid != nil {
-            print("user logedin!!!!!!!")
-        } else {
-            print("no user logedin")
-        }
+        Help.status()
         
         // Do any additional setup after loading the view, typically from a nib.
     }
@@ -40,25 +35,15 @@ class LoginViewController: UIViewController {
     @IBAction func loginButton(_ sender: Any) {
         let email: String = emailLabel.text!
         let password: String = passwordLabel.text!
-        print(email)
-        print(password)
         
         FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
             if error != nil {
                 print(error!)
-            }
-            
-            guard let uid = user?.uid else {
-                return
-            }
-            print(uid)
-            
-
-            if FIRAuth.auth()?.currentUser?.uid != nil {
-                print("user logedin!!!!!!!")
             } else {
-                print("no user logedin")
+                self.performSegue(withIdentifier: "backToMessage", sender: nil)
             }
+            
+            Help.status()
         }
         
         emailLabel.text = ""

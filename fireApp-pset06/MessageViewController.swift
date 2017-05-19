@@ -11,14 +11,18 @@ import Firebase
 
 class MessageViewController: UIViewController {
     
+    
     override func viewWillAppear(_ animated: Bool) {
+        statusHandeler()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        statusHandeler()
+        Help.logout()
     }
 
+    @IBAction func returnToMessage(segue: UIStoryboardSegue) {}
+    
     func statusHandeler() {
         
         // checks if the user is loged in if not send them to the login / register page
@@ -34,7 +38,7 @@ class MessageViewController: UIViewController {
                 
             })
         }
-        // for bebuding
+        // for debuding
         Help.status()
     }
     
