@@ -45,10 +45,7 @@ class LoginViewController: UIViewController {
             
             Help.status()
         }
-        
-        emailLabel.text = ""
-        passwordLabel.text = ""
-        
+    
         
     }
 

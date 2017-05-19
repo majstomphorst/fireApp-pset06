@@ -18,7 +18,7 @@ class MessageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Help.logout()
+        statusHandeler()
     }
 
     @IBAction func returnToMessage(segue: UIStoryboardSegue) {}
@@ -40,6 +40,11 @@ class MessageViewController: UIViewController {
         }
         // for debuding
         Help.status()
+    }
+    
+    @IBAction func logOut(_ sender: Any) {
+        Help.logout()
+        self.performSegue(withIdentifier: "toLogin", sender: nil)
     }
     
     

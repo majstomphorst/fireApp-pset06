@@ -11,8 +11,8 @@ import Firebase
 
 class NewMessageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let lst = ["test","test2"]
-
+    @IBOutlet weak var tableView: UITableView!
+    
     var users = [String]()
     
     override func viewDidLoad() {
@@ -28,6 +28,8 @@ class NewMessageViewController: UIViewController, UITableViewDataSource, UITable
             print(self.users.count)
             print(self.users)
             
+           self.tableView.reloadData()
+            
             })
         
         // Do any additional setup after loading the view.
@@ -41,18 +43,19 @@ class NewMessageViewController: UIViewController, UITableViewDataSource, UITable
 
     // MARK: Table
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return lst.count
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
+        print("??")
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NewMessageTableViewCell
         
-        
-        cell.usersLabel.text = lst[indexPath.row]
-        
+        cell.usersLabel.text = users[indexPath.row]
+        print("index\(users[indexPath.row])")
         
         return cell
+        
     }
     
    

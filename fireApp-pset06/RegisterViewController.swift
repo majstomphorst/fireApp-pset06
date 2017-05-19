@@ -11,6 +11,7 @@ import Firebase
 
 class RegisterViewController: UIViewController {
 
+    // Mark: Outlets
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var emailLabel: UITextField!
     @IBOutlet weak var passLabel: UITextField!
@@ -20,11 +21,6 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if FIRAuth.auth()?.currentUser?.uid != nil {
-            print("user logedin!!!!!!!")
-        } else {
-            print("no user logedin")
-        }
         // Do any additional setup after loading the view.
     }
 
@@ -35,7 +31,7 @@ class RegisterViewController: UIViewController {
     
     
     @IBAction func registerButton(_ sender: Any) {
-        let username = nameLabel.text
+        let displayName = nameLabel.text
         let email = emailLabel.text
         let password = passLabel.text
         
@@ -46,17 +42,17 @@ class RegisterViewController: UIViewController {
                 return
             }
             // succus auth
+            self.performSegue(withIdentifier: "backToMessage", sender: nil)
             
             guard let uid = user?.uid else {
                 return
             }
             
-            
             // save user
             let ref = FIRDatabase.database().reference(fromURL: "https://fireapp-pset06.firebaseio.com/")
             let userRef = ref.child("users").child(uid)
             
-            let values = ["username": username!, "email" : email!]
+            let values = ["username": displayName!, "email" : email!]
             
             userRef.updateChildValues(values, withCompletionBlock: { (err, ref) in
                 

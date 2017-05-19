@@ -118,6 +118,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="MessageVC" id="san-YF-Wvl">
+                        <barButtonItem key="leftBarButtonItem" title="LogOut" style="plain" id="Rjk-1F-JsJ">
+                            <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="logOut:" destination="lKt-HM-rNa" id="fjs-tN-YGE"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="wTQ-tX-bdp">
                             <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -189,6 +195,9 @@
                             <constraint firstAttribute="trailing" secondItem="Xah-2o-n4P" secondAttribute="trailing" id="vbC-K5-UOR"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="Xah-2o-n4P" id="rWO-hv-7UK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b47-Lu-sHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -296,6 +305,7 @@
                         <outlet property="nameLabel" destination="4wr-Ec-PnW" id="jEb-bF-Dae"/>
                         <outlet property="pass2Label" destination="zk6-2E-Neh" id="e8E-K8-1cS"/>
                         <outlet property="passLabel" destination="BTc-8Z-U99" id="wTd-Lc-leo"/>
+                        <segue destination="K7a-BX-ucj" kind="unwind" identifier="backToMessage" unwindAction="returnToMessageWithSegue:" id="xGi-Pz-prm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UOR-Pl-h8j" userLabel="First Responder" sceneMemberID="firstResponder"/>
