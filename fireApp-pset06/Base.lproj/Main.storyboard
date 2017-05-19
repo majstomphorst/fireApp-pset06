@@ -117,8 +117,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="MessageVC" id="san-YF-Wvl">
-                        <barButtonItem key="leftBarButtonItem" title="LogOut" style="plain" id="Rjk-1F-JsJ">
+                    <navigationItem key="navigationItem" id="san-YF-Wvl">
+                        <barButtonItem key="leftBarButtonItem" title="Log out" style="plain" id="Rjk-1F-JsJ">
                             <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="logOut:" destination="lKt-HM-rNa" id="fjs-tN-YGE"/>
@@ -188,6 +188,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Xah-2o-n4P" firstAttribute="leading" secondItem="VcD-K4-0cG" secondAttribute="leading" id="6CX-Zp-Me8"/>
                             <constraint firstItem="Xah-2o-n4P" firstAttribute="top" secondItem="YqZ-KC-xgK" secondAttribute="bottom" id="EVP-lu-pS5"/>
@@ -201,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b47-Lu-sHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2477.5999999999999" y="706.59670164917543"/>
+            <point key="canvasLocation" x="2446" y="572"/>
         </scene>
         <!--RegisterVC-->
         <scene sceneID="IW4-Ps-et7">

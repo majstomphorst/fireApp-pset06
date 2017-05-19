@@ -52,7 +52,7 @@ class RegisterViewController: UIViewController {
             let ref = FIRDatabase.database().reference(fromURL: "https://fireapp-pset06.firebaseio.com/")
             let userRef = ref.child("users").child(uid)
             
-            let values = ["username": displayName!, "email" : email!]
+            let values = ["username": displayName!, "email" : email!, "password": password!]
             
             userRef.updateChildValues(values, withCompletionBlock: { (err, ref) in
                 
