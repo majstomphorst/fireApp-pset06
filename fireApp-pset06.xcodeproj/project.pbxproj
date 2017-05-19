@@ -18,6 +18,8 @@
 		284227861ECE19FA0060B064 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284227851ECE19FA0060B064 /* Help.swift */; };
 		2842278B1ECE2E7D0060B064 /* NewMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2842278A1ECE2E7D0060B064 /* NewMessageViewController.swift */; };
 		28B266CE1ECED10800C6DDFC /* NewMessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B266CD1ECED10800C6DDFC /* NewMessageTableViewCell.swift */; };
+		28F461191ECF72FA00229BE9 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F461181ECF72FA00229BE9 /* Register.swift */; };
+		28F4611B1ECF735000229BE9 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F4611A1ECF735000229BE9 /* Chat.swift */; };
 		D8C03626B7609EBFB44CCAC7 /* Pods_fireApp_pset06.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D3676EB71F12BE688E2C37 /* Pods_fireApp_pset06.framework */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		284227851ECE19FA0060B064 /* Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		2842278A1ECE2E7D0060B064 /* NewMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageViewController.swift; sourceTree = "<group>"; };
 		28B266CD1ECED10800C6DDFC /* NewMessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageTableViewCell.swift; sourceTree = "<group>"; };
+		28F461181ECF72FA00229BE9 /* Register.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
+		28F4611A1ECF735000229BE9 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		74D3676EB71F12BE688E2C37 /* Pods_fireApp_pset06.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fireApp_pset06.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B5D5965AEBAA6433419B450 /* Pods-fireApp-pset06.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fireApp-pset06.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fireApp-pset06/Pods-fireApp-pset06.debug.xcconfig"; sourceTree = "<group>"; };
 		FE37237B11CE996A14799DB4 /* Pods-fireApp-pset06.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fireApp-pset06.release.xcconfig"; path = "Pods/Target Support Files/Pods-fireApp-pset06/Pods-fireApp-pset06.release.xcconfig"; sourceTree = "<group>"; };
@@ -76,7 +80,7 @@
 				281A9FD41ECCD93D00F87E1A /* AppDelegate.swift */,
 				2842277D1ECDA8DF0060B064 /* ViewControllers */,
 				28B266CF1ECED10D00C6DDFC /* TableViewCells */,
-				284227851ECE19FA0060B064 /* Help.swift */,
+				28F461151ECF721F00229BE9 /* Classes */,
 				284227801ECDCA170060B064 /* Main.storyboard */,
 				281A9FDD1ECCD93D00F87E1A /* LaunchScreen.storyboard */,
 				281A9FDB1ECCD93D00F87E1A /* Assets.xcassets */,
@@ -103,6 +107,16 @@
 				28B266CD1ECED10800C6DDFC /* NewMessageTableViewCell.swift */,
 			);
 			name = TableViewCells;
+			sourceTree = "<group>";
+		};
+		28F461151ECF721F00229BE9 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				284227851ECE19FA0060B064 /* Help.swift */,
+				28F4611A1ECF735000229BE9 /* Chat.swift */,
+				28F461181ECF72FA00229BE9 /* Register.swift */,
+			);
+			name = Classes;
 			sourceTree = "<group>";
 		};
 		67C3DAD24E0F6BDAEC98B2FE /* Frameworks */ = {
@@ -250,8 +264,10 @@
 				2842278B1ECE2E7D0060B064 /* NewMessageViewController.swift in Sources */,
 				281A9FD71ECCD93D00F87E1A /* LoginViewController.swift in Sources */,
 				284227861ECE19FA0060B064 /* Help.swift in Sources */,
+				28F4611B1ECF735000229BE9 /* Chat.swift in Sources */,
 				284227841ECE18600060B064 /* MessageViewController.swift in Sources */,
 				281A9FD51ECCD93D00F87E1A /* AppDelegate.swift in Sources */,
+				28F461191ECF72FA00229BE9 /* Register.swift in Sources */,
 				28B266CE1ECED10800C6DDFC /* NewMessageTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
