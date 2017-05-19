@@ -14,8 +14,21 @@ class MessageViewController: JSQMessagesViewController {
     
     var messages = [JSQMessage]()
     
+    
     override func viewWillAppear(_ animated: Bool) {
+        self.senderId = "1"
+        self.senderDisplayName = "Tim"
         statusHandeler()
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
+        return JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"chatBubble"), diameter: 30)
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+        let bubbleFactory = JSQMessagesBubbleImageFactory()
+        // let message = messages[indexPath.item]
+        return bubbleFactory?.outgoingMessagesBubbleImage(with: UIColor.blue)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -32,11 +45,14 @@ class MessageViewController: JSQMessagesViewController {
         return messages[indexPath.item]
     }
     
+    
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
+        messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
         // clears the text
         finishSendingMessage(animated: true)
-        print("send")
+        
+        collectionView.reloadData()
     }
     
     
