@@ -18,6 +18,7 @@ class NewMessageViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // getting al "users" data!
         FIRDatabase.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             print(snapshot)
@@ -25,19 +26,12 @@ class NewMessageViewController: UIViewController, UITableViewDataSource, UITable
             if var dict = snapshot.value as? [String : AnyObject]{
                 self.users.append(dict["username"] as! String)
             }
-            print(self.users.count)
-            print(self.users)
             
            self.tableView.reloadData()
             
             })
         
         // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
 
@@ -48,17 +42,14 @@ class NewMessageViewController: UIViewController, UITableViewDataSource, UITable
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
-        print("??")
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! NewMessageTableViewCell
         
         cell.usersLabel.text = users[indexPath.row]
-        print("index\(users[indexPath.row])")
         
         return cell
         
     }
     
+    
    
-
-
 }

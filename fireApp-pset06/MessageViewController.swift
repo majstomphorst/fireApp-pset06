@@ -8,21 +8,48 @@
 
 import UIKit
 import Firebase
+import JSQMessagesViewController
 
-class MessageViewController: UIViewController {
+class MessageViewController: JSQMessagesViewController {
     
+    var messages = [JSQMessage]()
     
     override func viewWillAppear(_ animated: Bool) {
         statusHandeler()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        statusHandeler()
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return messages.count
     }
-
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+        
+        return messages[indexPath.item]
+    }
+    
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        
+        // clears the text
+        finishSendingMessage(animated: true)
+        print("send")
+    }
+    
+    
+    // MARK: Actions
     @IBAction func returnToMessage(segue: UIStoryboardSegue) {}
     
+    @IBAction func logOut(_ sender: Any) {
+        Help.logout()
+        self.performSegue(withIdentifier: "toLogin", sender: nil)
+    }
+    
+    
+    // MARK: Functions
     func statusHandeler() {
         
         // checks if the user is loged in if not send them to the login / register page
@@ -41,12 +68,5 @@ class MessageViewController: UIViewController {
         // for debuding
         Help.status()
     }
-    
-    @IBAction func logOut(_ sender: Any) {
-        Help.logout()
-        self.performSegue(withIdentifier: "toLogin", sender: nil)
-    }
-    
-    
 
 }
