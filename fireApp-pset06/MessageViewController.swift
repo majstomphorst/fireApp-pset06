@@ -14,11 +14,13 @@ class MessageViewController: JSQMessagesViewController {
     
     // a variable to store messages in the firebase
     var messages = [JSQMessage]()
+    var chat = String()
     
     override func viewWillAppear(_ animated: Bool) {
         self.senderId = "1"
         self.senderDisplayName = "Tim"
         statusHandeler()
+        readFire()
     }
     
     
@@ -52,10 +54,18 @@ class MessageViewController: JSQMessagesViewController {
         return messages[indexPath.item]
     }
     
-    // is sendbuttons is pressed. ...............
+    // when sendbuttons is pressed. ...............
     override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
         
-        messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
+        
+        // ride data to firebase
+        let ref = FIRDatabase.database().reference().child("messages").childByAutoId()
+        let values = ["text": text!, "username": self.navigationItem.title!]
+        ref.updateChildValues(values)
+        
+        
+        
+//        messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
         // clears the text
         finishSendingMessage(animated: true)
         
@@ -92,6 +102,18 @@ class MessageViewController: JSQMessagesViewController {
         }
         // for debuding
         Help.status()
+    }
+    
+    func readFire() {
+        // getting al "users" data!
+        FIRDatabase.database().reference().child("messages").observe(.childAdded, with: { (snapshot) in
+            
+            if var dict = snapshot.value as? [String : AnyObject]{
+                self.messages.append(JSQMessage(senderId: self.senderId, displayName: self.senderDisplayName, text: dict["text"] as! String))
+                
+            }
+            self.collectionView.reloadData()
+        })
     }
 
 }
