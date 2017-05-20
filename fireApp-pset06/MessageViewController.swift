@@ -15,6 +15,10 @@ class MessageViewController: JSQMessagesViewController {
     // a variable to store messages in the firebase
     var messages = [JSQMessage]()
     
+    override func viewDidDisappear(_ animated: Bool) {
+        messages = [JSQMessage]()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.senderId = "1"
         self.senderDisplayName = "Tim"
@@ -31,7 +35,6 @@ class MessageViewController: JSQMessagesViewController {
                 }
                 
             })
-            
             
         } else {
             performSegue(withIdentifier: "toLogin", sender: nil)
