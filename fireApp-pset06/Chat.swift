@@ -7,7 +7,17 @@
 //
 
 import Foundation
+import Firebase
+import JSQMessagesViewController
 
 class Chat {
+    
+    static let shared = Chat()
+    
+    var messages = [JSQMessage]()
+    
+    private init(){ 
+        
+    }
     
 }

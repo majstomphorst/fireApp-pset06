@@ -14,13 +14,30 @@ class MessageViewController: JSQMessagesViewController {
     
     // a variable to store messages in the firebase
     var messages = [JSQMessage]()
-    var chat = String()
     
     override func viewWillAppear(_ animated: Bool) {
         self.senderId = "1"
         self.senderDisplayName = "Tim"
-        statusHandeler()
+        
         readFire()
+        
+        if Register.shared.checkLoginState() {
+            // update login header
+            let uid = FIRAuth.auth()?.currentUser?.uid
+            FIRDatabase.database().reference().child("users").child(uid!).observe(.value, with: { (snapshot) in
+                
+                if let user = snapshot.value as? [String: AnyObject] {
+                    self.navigationItem.title = user["username"] as? String
+                }
+                
+            })
+            
+            
+        } else {
+            performSegue(withIdentifier: "toLogin", sender: nil)
+        }
+        
+        
     }
     
     
@@ -64,9 +81,6 @@ class MessageViewController: JSQMessagesViewController {
         ref.updateChildValues(values)
         
         
-        
-//        messages.append(JSQMessage(senderId: senderId, displayName: senderDisplayName, text: text))
-        // clears the text
         finishSendingMessage(animated: true)
         
         collectionView.reloadData()

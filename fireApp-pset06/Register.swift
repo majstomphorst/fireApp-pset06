@@ -13,30 +13,22 @@ import Firebase
 
 class Register {
     
+    static let shared = Register()
+    
+    var uid = ""
+    
+    private init() {
+        
+        
+    }
     
     // this function checks is a user is logedin or not
-    static func checkLoginState() throws -> Bool {
+    func checkLoginState() -> Bool {
         
         if FIRAuth.auth()?.currentUser?.uid == nil {
             return false
         }
         return true
-    }
-    
-    
-    // this function returns the users displayname
-    static func GetDisplayName() throws -> String {
-        
-        var user = [String: AnyObject]()
-        
-        let uid = FIRAuth.auth()?.currentUser?.uid
-        FIRDatabase.database().reference().child("users").child(uid!).observe(.value, with: { (snapshot) in
-            
-            
-        })
-        
-        return (user["username"] as? String)!
-        
     }
     
    

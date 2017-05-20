@@ -171,6 +171,7 @@
 				TargetAttributes = {
 					281A9FD01ECCD93D00F87E1A = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 5QYLX323BC;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -394,6 +395,7 @@
 			baseConfigurationReference = 8B5D5965AEBAA6433419B450 /* Pods-fireApp-pset06.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5QYLX323BC;
 				INFOPLIST_FILE = "fireApp-pset06/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.mprog.nl.fireApp-pset06";
@@ -407,6 +409,7 @@
 			baseConfigurationReference = FE37237B11CE996A14799DB4 /* Pods-fireApp-pset06.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 5QYLX323BC;
 				INFOPLIST_FILE = "fireApp-pset06/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.mprog.nl.fireApp-pset06";
