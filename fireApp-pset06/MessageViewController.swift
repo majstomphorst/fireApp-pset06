@@ -21,7 +21,6 @@ class MessageViewController: JSQMessagesViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        readFire()
         
         if checkLoginState() {
             // update login header
@@ -29,17 +28,20 @@ class MessageViewController: JSQMessagesViewController {
             
             FIRDatabase.database().reference().child("users").child(userId!).observe(.value, with: { (snapshot) in
                 
+                self.readFire()
+                
                 if let user = snapshot.value as? NSDictionary {
                     self.senderDisplayName = user["username"] as? String
                     self.senderId = self.senderDisplayName
                     self.navigationItem.title = self.senderDisplayName
+                } else {
+                    // something error
                 }
             })
             
         } else {
             performSegue(withIdentifier: "toLogin", sender: nil)
         }
-        
         
     }
     
@@ -63,7 +65,7 @@ class MessageViewController: JSQMessagesViewController {
     // creates a bubbel to display the message
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
         let bubbleFactory = JSQMessagesBubbleImageFactory()
-        // let message = messages[indexPath.item]
+        
         return bubbleFactory?.outgoingMessagesBubbleImage(with: UIColor.blue)
     }
     
@@ -84,18 +86,14 @@ class MessageViewController: JSQMessagesViewController {
     }
     
     // when sendbuttons is pressed. ...............
-    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
-        
+    override func didPressSend(_ button: UIButton, withMessageText text: String, senderId: String, senderDisplayName: String, date: Date) {
         
         // ride data to firebase
         let ref = FIRDatabase.database().reference().child("messages").childByAutoId()
-        let values = ["text": text!, "username": self.navigationItem.title!]
+        let values = ["text" : text, "username" : senderDisplayName, "senderId" : senderId]
         ref.updateChildValues(values)
         
-        
         finishSendingMessage(animated: true)
-        
-        collectionView.reloadData()
     }
     
     
@@ -106,36 +104,23 @@ class MessageViewController: JSQMessagesViewController {
     
     // if the logout button is pressed logout and return to the login page
     @IBAction func logOut(_ sender: Any) {
-        Help.logout()
+        do {
+            try FIRAuth.auth()?.signOut()
+        } catch {
+            print("logout faild")
+        }
+        
         self.performSegue(withIdentifier: "toLogin", sender: nil)
     }
     
     // MARK: Functions
-    func statusHandeler() {
-        
-        // checks if the user is loged in if not send them to the login / register page
-        if FIRAuth.auth()?.currentUser?.uid == nil {
-            self.performSegue(withIdentifier: "toLogin", sender: nil)
-        } else {
-            let uid = FIRAuth.auth()?.currentUser?.uid
-            FIRDatabase.database().reference().child("users").child(uid!).observe(.value, with: { (snapshot) in
-                
-                if let user = snapshot.value as? [String: AnyObject] {
-                    self.navigationItem.title = user["username"] as? String
-                }
-                
-            })
-        }
-        // for debuding
-        Help.status()
-    }
-    
+  
     func readFire() {
         // getting al "users" data!
         FIRDatabase.database().reference().child("messages").observe(.childAdded, with: { (snapshot) in
             
-            if var dict = snapshot.value as? [String : AnyObject]{
-                self.messages.append(JSQMessage(senderId: self.senderId, displayName: self.senderDisplayName, text: dict["text"] as! String))
+            if let messages = snapshot.value as? NSDictionary {
+                self.messages.append(JSQMessage(senderId: messages["senderId"] as? String, displayName: messages["username"] as? String, text: messages["text"] as? String))
                 
             }
             self.collectionView.reloadData()

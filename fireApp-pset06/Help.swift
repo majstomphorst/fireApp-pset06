@@ -20,12 +20,5 @@ class Help {
         }
     }
     
-    static func logout() {
-        do {
-            try FIRAuth.auth()?.signOut()
-        } catch {
-            print("logout faild")
-        }
-        
-    }
+    
 }
