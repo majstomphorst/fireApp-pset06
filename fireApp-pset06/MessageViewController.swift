@@ -20,20 +20,20 @@ class MessageViewController: JSQMessagesViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.senderId = "1"
-        self.senderDisplayName = "Tim"
         
         readFire()
         
-        if Register.shared.checkLoginState() {
+        if checkLoginState() {
             // update login header
-            let uid = FIRAuth.auth()?.currentUser?.uid
-            FIRDatabase.database().reference().child("users").child(uid!).observe(.value, with: { (snapshot) in
+            let userId = FIRAuth.auth()?.currentUser?.uid
+            
+            FIRDatabase.database().reference().child("users").child(userId!).observe(.value, with: { (snapshot) in
                 
-                if let user = snapshot.value as? [String: AnyObject] {
-                    self.navigationItem.title = user["username"] as? String
+                if let user = snapshot.value as? NSDictionary {
+                    self.senderDisplayName = user["username"] as? String
+                    self.senderId = self.senderDisplayName
+                    self.navigationItem.title = self.senderDisplayName
                 }
-                
             })
             
         } else {
@@ -41,6 +41,15 @@ class MessageViewController: JSQMessagesViewController {
         }
         
         
+    }
+    
+    // this function checks is a user is logedin or not
+    func checkLoginState() -> Bool {
+        
+        if FIRAuth.auth()?.currentUser?.uid == nil {
+            return false
+        }
+        return true
     }
     
     
