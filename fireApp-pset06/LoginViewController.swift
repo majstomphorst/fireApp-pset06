@@ -17,9 +17,7 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        Help.status()
-        
+    
         // Do any additional setup after loading the view, typically from a nib.
     }
 

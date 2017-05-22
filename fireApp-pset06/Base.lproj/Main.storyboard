@@ -124,12 +124,6 @@
                                 <action selector="logOut:" destination="lKt-HM-rNa" id="fjs-tN-YGE"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="wTQ-tX-bdp">
-                            <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="szE-0b-j4t" kind="show" id="s75-Zv-1bb"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="toLogin" modalPresentationStyle="pageSheet" modalTransitionStyle="coverVertical" id="nQe-yf-tC1"/>
@@ -138,71 +132,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vDL-uO-Hje" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1729" y="707"/>
-        </scene>
-        <!--New Message View Controller-->
-        <scene sceneID="OMb-zg-5ZN">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="szE-0b-j4t" customClass="NewMessageViewController" customModule="fireApp_pset06" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="YqZ-KC-xgK"/>
-                        <viewControllerLayoutGuide type="bottom" id="eZx-eq-wCJ"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="VcD-K4-0cG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xah-2o-n4P">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cell" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="noi-Vf-hYZ" customClass="NewMessageTableViewCell" customModule="fireApp_pset06" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="noi-Vf-hYZ" id="Vqo-F8-1vV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwd-J7-YLJ">
-                                                    <rect key="frame" x="16" y="8" width="343" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="vwd-J7-YLJ" secondAttribute="bottom" id="AuG-xt-uDt"/>
-                                                <constraint firstItem="vwd-J7-YLJ" firstAttribute="top" secondItem="Vqo-F8-1vV" secondAttribute="topMargin" id="Pgy-rN-0B3"/>
-                                                <constraint firstItem="vwd-J7-YLJ" firstAttribute="leading" secondItem="Vqo-F8-1vV" secondAttribute="leadingMargin" constant="8" id="lbt-xw-Zhd"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="vwd-J7-YLJ" secondAttribute="trailing" constant="8" id="sRm-B2-7IJ"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="usersLabel" destination="vwd-J7-YLJ" id="c2H-CW-Oak"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="szE-0b-j4t" id="qgj-ra-inQ"/>
-                                    <outlet property="delegate" destination="szE-0b-j4t" id="2Ro-6W-hhF"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="Xah-2o-n4P" firstAttribute="leading" secondItem="VcD-K4-0cG" secondAttribute="leading" id="6CX-Zp-Me8"/>
-                            <constraint firstItem="Xah-2o-n4P" firstAttribute="top" secondItem="YqZ-KC-xgK" secondAttribute="bottom" id="EVP-lu-pS5"/>
-                            <constraint firstItem="eZx-eq-wCJ" firstAttribute="top" secondItem="Xah-2o-n4P" secondAttribute="bottom" id="Pca-ye-A4e"/>
-                            <constraint firstAttribute="trailing" secondItem="Xah-2o-n4P" secondAttribute="trailing" id="vbC-K5-UOR"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="Xah-2o-n4P" id="rWO-hv-7UK"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="b47-Lu-sHc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2446" y="572"/>
         </scene>
         <!--RegisterVC-->
         <scene sceneID="IW4-Ps-et7">

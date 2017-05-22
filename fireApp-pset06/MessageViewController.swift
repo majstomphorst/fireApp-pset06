@@ -21,18 +21,16 @@ class MessageViewController: JSQMessagesViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        
         if checkLoginState() {
             // update login header
             let userId = FIRAuth.auth()?.currentUser?.uid
-            
-            FIRDatabase.database().reference().child("users").child(userId!).observe(.value, with: { (snapshot) in
+            FIRDatabase.database().reference().child("users").child(userId!).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 self.readFire()
                 
                 if let user = snapshot.value as? NSDictionary {
                     self.senderDisplayName = user["username"] as? String
-                    self.senderId = self.senderDisplayName
+                    self.senderId = userId
                     self.navigationItem.title = self.senderDisplayName
                 } else {
                     // something error
@@ -53,7 +51,6 @@ class MessageViewController: JSQMessagesViewController {
         }
         return true
     }
-    
     
     // MARK: JSQMessage actions
     
