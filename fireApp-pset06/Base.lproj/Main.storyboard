@@ -15,7 +15,7 @@
         <!--LoginVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginVC" title="LoginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="fireApp_pset06" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" title="LoginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="fireApp_pset06" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -107,7 +107,7 @@
         <!--MessageVC-->
         <scene sceneID="n4f-8J-rNZ">
             <objects>
-                <viewController title="MessageVC" id="lKt-HM-rNa" customClass="MessageViewController" customModule="fireApp_pset06" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MessageVC" title="MessageVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lKt-HM-rNa" customClass="MessageViewController" customModule="fireApp_pset06" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hrm-HY-Qi1"/>
                         <viewControllerLayoutGuide type="bottom" id="zcg-7d-8XS"/>
@@ -136,7 +136,7 @@
         <!--RegisterVC-->
         <scene sceneID="IW4-Ps-et7">
             <objects>
-                <viewController title="RegisterVC" id="hbv-i6-5XU" customClass="RegisterViewController" customModule="fireApp_pset06" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterVC" title="RegisterVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hbv-i6-5XU" customClass="RegisterViewController" customModule="fireApp_pset06" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3Yu-JZ-IFm"/>
                         <viewControllerLayoutGuide type="bottom" id="upd-a6-ZcA"/>
@@ -246,7 +246,7 @@
         <!--Navigation Controller-->
         <scene sceneID="7bo-z6-Xwx">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IgG-Lm-5fe" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IgG-Lm-5fe" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4H2-Vw-OR8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
