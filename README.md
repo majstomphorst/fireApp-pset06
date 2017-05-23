@@ -1,9 +1,9 @@
 # fireApp-pset06
 ### App studio - pset06 - 11436727 - Maxim Stomphorst
-[![BCH compliance](https://bettercodehub.com/edge/badge/majstomphorst/fireApp-pset06?branch=master)](https://bettercodehub.com/)
+![BCHcompliance](https://bettercodehub.com/edge/badge/majstomphorst/fireApp-pset06?branch=master)
 
 # Instructions
-An awesome cross-platform chatapp. There is one chatroom where both IOS and Android users can rant to their hearts delight. For the Android version see [**Sander's awesome Android implementation **](https://github.com/grelon/sander-pset6)
+An awesome cross-platform chatapp. There is one chatroom where both IOS and Android users can rant to their hearts delight. For the Android version see [**Sander's awesome Android implementation**](https://github.com/grelon/sander-pset6)
 # Noteworthy to mentions
 
 ### thanks to the developers off JSQMessages
