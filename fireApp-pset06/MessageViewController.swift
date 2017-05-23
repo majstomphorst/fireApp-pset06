@@ -17,15 +17,13 @@ class MessageViewController: JSQMessagesViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        handleError(title: "title", message: "message")
-        
         // hides the "add attachment" button from te UI
         self.inputToolbar.contentView.leftBarButtonItem = nil
         
         // this check if a user is login or not
         // gets the userId for the currently logedin user
         if let userId = FIRAuth.auth()?.currentUser?.uid {
-            
+           
             // Reads the user's information by the userId
             FIRDatabase.database().reference().child("users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
                 
@@ -42,11 +40,11 @@ class MessageViewController: JSQMessagesViewController {
             
         // if the user is not logedin send user to the loginscreen
         } else {
+           
             performSegue(withIdentifier: "toLogin", sender: nil)
         }
         
     }
-    
     
     // MARK: JSQMessage functions
     
@@ -113,7 +111,7 @@ class MessageViewController: JSQMessagesViewController {
             self.performSegue(withIdentifier: "toLogin", sender: nil)
             
         } catch {
-            handleError(title: "logout error", message: "please force shut down the app, and restart.")
+            alertUser(title: "logout went wrong", message: error.localizedDescription)
         }
         
     }
@@ -134,6 +132,8 @@ class MessageViewController: JSQMessagesViewController {
                 // properly formating and converting the Dictionary to JSQMessage type
                 self.messages.append(JSQMessage(senderId: messages["senderId"] as? String, displayName: messages["username"] as? String, text: messages["text"] as? String))
                 
+            } else {
+                self.alertUser(title: "Reading messages went wrong", message: "No feedback provided sorry!")
             }
             
             // reloading the messages view

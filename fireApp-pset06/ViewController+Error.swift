@@ -11,7 +11,7 @@ import UIKit
 
 extension UIViewController {
     
-    func handleError(title: String, message: String) {
+    func alertUser(title: String, message: String) {
         
         // create the alert
         let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)

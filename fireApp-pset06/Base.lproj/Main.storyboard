@@ -72,7 +72,6 @@
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="Register"/>
                                                 <connections>
-                                                    <action selector="loginButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UJm-4b-6JN"/>
                                                     <segue destination="hbv-i6-5XU" kind="showDetail" identifier="toRegister" id="XPk-Ty-RDj">
                                                         <segue key="commit" inheritsFrom="parent" id="13Q-BR-vdE"/>
                                                         <segue key="preview" inheritsFrom="commit" id="DCX-TV-2ST"/>
@@ -125,7 +124,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="san-YF-Wvl">
-                        <barButtonItem key="leftBarButtonItem" title="Log out" style="plain" id="Rjk-1F-JsJ">
+                        <barButtonItem key="leftBarButtonItem" title="Log out" id="Rjk-1F-JsJ">
                             <color key="tintColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="logOut:" destination="lKt-HM-rNa" id="fjs-tN-YGE"/>

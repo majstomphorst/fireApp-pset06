@@ -15,17 +15,23 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailLabel: UITextField!
     @IBOutlet weak var passwordLabel: UITextField!
     
-    // this function privodes a link to RegisterVC to go back with a slide out animation
+    // privodes a link to RegisterVC so that a unwind action can be called
     @IBAction func returnToLogin(segue: UIStoryboardSegue) {}
     
     //Mark: actions
     @IBAction func loginButton(_ sender: Any) {
+        
+        // getting data from user
         let email: String = emailLabel.text!
         let password: String = passwordLabel.text!
         
+        
+        // Sining the user in to there account with the information provided
         FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
             if error != nil {
-                print(error!)
+                
+                self.alertUser(title: "Sining in went wrong", message: error!.localizedDescription)
+                
             } else {
                 self.performSegue(withIdentifier: "backToMessage", sender: nil)
             }
