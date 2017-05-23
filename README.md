@@ -19,7 +19,7 @@ An awesome cross-platform chatapp. There is one chatroom where both IOS and Andr
 There is some inconsistency with the naming scheme
 the terms `username` and `displayname` are something used interchangeably.<br/>
 Reasons:<br/>
-Together with the Android developer we decided on a fireDatabase scheme.<br/>
+Together with the Android developer we decided on a fireDatabase datastruction.<br/>
 On ios i was bound by the JSQMessages protocal.
 
 # Screenshot
