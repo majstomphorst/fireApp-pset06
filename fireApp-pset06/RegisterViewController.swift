@@ -20,7 +20,6 @@ class RegisterViewController: UIViewController {
     
     //MARK: Actions
     @IBAction func registerButton(_ sender: Any) {
-        
 
         let displayName = nameLabel.text!
         let email = emailLabel.text!
