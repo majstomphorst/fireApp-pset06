@@ -95,10 +95,15 @@ class MessageViewController: JSQMessagesViewController {
     // when sendbuttons is pressed. ...............
     override func didPressSend(_ button: UIButton, withMessageText text: String, senderId: String, senderDisplayName: String, date: Date) {
         
-        // ride data to firebase
-        let ref = FIRDatabase.database().reference().child("messages").childByAutoId()
-        let values = ["text" : text, "username" : senderDisplayName, "senderId" : senderId]
-        ref.updateChildValues(values)
+        // creating a reference to firebase where the message info is to be saved
+        let reference = FIRDatabase.database().reference().child("messages").childByAutoId()
+        
+        // crating a dictionary with al de message information
+        let message = ["text" : text, "username" : senderDisplayName, "senderId" : senderId]
+        
+        // saving the message at the reference location
+        reference.updateChildValues(message)
+        
         
         finishSendingMessage(animated: true)
     }
@@ -117,7 +122,7 @@ class MessageViewController: JSQMessagesViewController {
             // if the user is logout clear temporary storage
             messages = [JSQMessage]()
             
-            // send the user to to lologin view
+            
             self.performSegue(withIdentifier: "toLogin", sender: nil)
             
         } catch {
