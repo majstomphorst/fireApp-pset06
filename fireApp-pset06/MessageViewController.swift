@@ -17,17 +17,17 @@ class MessageViewController: JSQMessagesViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        handleError(title: "title", message: "message")
+        
         // hides the "add attachment" button from te UI
         self.inputToolbar.contentView.leftBarButtonItem = nil
         
         // this check if a user is login or not
-        if checkLoginState() {
-            
-            // gets the userId for the currently logedin user
-            let userId = FIRAuth.auth()?.currentUser?.uid
+        // gets the userId for the currently logedin user
+        if let userId = FIRAuth.auth()?.currentUser?.uid {
             
             // Reads the user's information by the userId
-            FIRDatabase.database().reference().child("users").child(userId!).observeSingleEvent(of: .value, with: { (snapshot) in
+            FIRDatabase.database().reference().child("users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
                 
                 // reads messages from Firbase and stores it in: var messages
                 self.readMessages()
@@ -90,12 +90,14 @@ class MessageViewController: JSQMessagesViewController {
         // saving the message at the reference location
         reference.updateChildValues(message)
         
-    
+        // empty's the inputfield
         finishSendingMessage(animated: true)
+        
+        scrollToBottom(animated: true)
     }
     
     
-    // MARK: Actions
+    // MARK: - Actions
     
     // creates a segue back this is needed to make the slide down animations (unwinde)
     @IBAction func returnToMessage(segue: UIStoryboardSegue) {}
@@ -108,16 +110,15 @@ class MessageViewController: JSQMessagesViewController {
             // if the user is logout clear temporary storage
             messages = [JSQMessage]()
             
-            
             self.performSegue(withIdentifier: "toLogin", sender: nil)
             
         } catch {
-            print("logout faild")
+            handleError(title: "logout error", message: "please force shut down the app, and restart.")
         }
         
     }
     
-    // MARK: Functions
+    // MARK: - Functions
     
     /*
      This functions read all messages from the Firbaseands, stores it in de "messages" variable of type "JSQMesage".
@@ -137,21 +138,13 @@ class MessageViewController: JSQMessagesViewController {
             
             // reloading the messages view
             self.collectionView.reloadData()
+            
+            // moving the screen down so that the last message is readble
+            self.scrollToBottom(animated: true)
         })
     }
     
-    /*
-     This check if a user is login or not.
-     If the user is login it returns true.
-     If no user is login it returns false.
-     */
-    func checkLoginState() -> Bool {
-        
-        if FIRAuth.auth()?.currentUser?.uid == nil {
-            return false
-        }
-        return true
-    }
+
 
     
 }

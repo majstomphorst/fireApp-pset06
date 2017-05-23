@@ -26,7 +26,7 @@ class RegisterViewController: UIViewController {
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { ( user, error) in
             
             if error != nil {
-                print(error!)
+                self.handleError(title: "Creating user error", message:"test error")
                 return
             }
             // succus auth
