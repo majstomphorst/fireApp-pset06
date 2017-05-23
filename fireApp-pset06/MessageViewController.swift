@@ -15,18 +15,22 @@ class MessageViewController: JSQMessagesViewController {
     // a variable to store messages in the firebase
     var messages = [JSQMessage]()
     
-    override func viewDidDisappear(_ animated: Bool) {
-        messages = [JSQMessage]()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         
+        // hides the "add attachment" button from te UI
+        self.inputToolbar.contentView.leftBarButtonItem = nil
+        
+        // this check if a user is login or not
         if checkLoginState() {
-            // update login header
+            
+            // gets the userId for the currently logedin user
             let userId = FIRAuth.auth()?.currentUser?.uid
+            
+            // Reads the user's information by the userId
             FIRDatabase.database().reference().child("users").child(userId!).observeSingleEvent(of: .value, with: { (snapshot) in
                 
-                self.readFire()
+                // reads messages from Firbase and stores it in: var messages
+                self.readMessages()
                 
                 if let user = snapshot.value as? NSDictionary {
                     self.senderDisplayName = user["username"] as? String
@@ -37,13 +41,19 @@ class MessageViewController: JSQMessagesViewController {
                 }
             })
             
+            // if the user is not logedin send him to the loginscreen
         } else {
             performSegue(withIdentifier: "toLogin", sender: nil)
         }
         
     }
     
-    // this function checks is a user is logedin or not
+    
+    /*
+     This check if a user is login or not. 
+     If the user is login it returns true.
+     If no user is login it returns false.
+    */
     func checkLoginState() -> Bool {
         
         if FIRAuth.auth()?.currentUser?.uid == nil {
@@ -103,23 +113,38 @@ class MessageViewController: JSQMessagesViewController {
     @IBAction func logOut(_ sender: Any) {
         do {
             try FIRAuth.auth()?.signOut()
+            
+            // if the user is logout clear temporary storage
+            messages = [JSQMessage]()
+            
+            // send the user to to lologin view
+            self.performSegue(withIdentifier: "toLogin", sender: nil)
+            
         } catch {
             print("logout faild")
         }
         
-        self.performSegue(withIdentifier: "toLogin", sender: nil)
     }
     
     // MARK: Functions
-  
-    func readFire() {
-        // getting al "users" data!
+    
+    /*
+     This functions read all messages from the Firbaseands, stores it in de "messages" variable of type "JSQMesage".
+     When its done it reloads the messages view (to display the messages).
+    */
+    func readMessages() {
+        // getting al "messages" data!
         FIRDatabase.database().reference().child("messages").observe(.childAdded, with: { (snapshot) in
             
+            // interpeting the made "snapshot" as a dictionary
             if let messages = snapshot.value as? NSDictionary {
+                
+                // properly formating and converting the Dictionary to JSQMessage type
                 self.messages.append(JSQMessage(senderId: messages["senderId"] as? String, displayName: messages["username"] as? String, text: messages["text"] as? String))
                 
             }
+            
+            // reloading the messages view
             self.collectionView.reloadData()
         })
     }

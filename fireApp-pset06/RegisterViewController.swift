@@ -17,13 +17,14 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passLabel: UITextField!
     @IBOutlet weak var pass2Label: UITextField!
     
+    
     //MARK: Actions
     @IBAction func registerButton(_ sender: Any) {
+        
 
         let displayName = nameLabel.text!
         let email = emailLabel.text!
         let password = passLabel.text!
-
         
         FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { ( user, error) in
             
