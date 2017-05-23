@@ -11,12 +11,12 @@ import Firebase
 
 class RegisterViewController: UIViewController {
 
-    // Mark: Outlets
+    // Mark: - Outlets
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var emailLabel: UITextField!
     @IBOutlet weak var passLabel: UITextField!
     
-    //MARK: Actions
+    //MARK: - Actions
     @IBAction func registerButton(_ sender: Any) {
 
         let displayName = nameLabel.text!

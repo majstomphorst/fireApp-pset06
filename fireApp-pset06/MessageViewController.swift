@@ -27,14 +27,14 @@ class MessageViewController: JSQMessagesViewController {
             // Reads the user's information by the userId
             FIRDatabase.database().reference().child("users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
                 
-                // reads messages from Firbase and stores it in: var messages
-                self.readMessages()
-                
                 if let user = snapshot.value as? NSDictionary {
                     self.senderDisplayName = user["username"] as? String
                     self.senderId = userId
                     self.navigationItem.title = self.senderDisplayName
                 }
+                
+                // reads messages from Firbase and stores it in: var messages
+                self.readMessages()
                 
             })
             
@@ -46,7 +46,7 @@ class MessageViewController: JSQMessagesViewController {
         
     }
     
-    // MARK: JSQMessage functions
+    // MARK: - JSQMessage functions
     
     // displays a picture next to the message text.
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
@@ -107,6 +107,9 @@ class MessageViewController: JSQMessagesViewController {
             
             // if the user is logout clear temporary storage
             messages = [JSQMessage]()
+            
+            // will stop all observers
+            FIRDatabase.database().reference().removeAllObservers()
             
             self.performSegue(withIdentifier: "toLogin", sender: nil)
             
