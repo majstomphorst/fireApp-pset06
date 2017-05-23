@@ -15,8 +15,6 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var nameLabel: UITextField!
     @IBOutlet weak var emailLabel: UITextField!
     @IBOutlet weak var passLabel: UITextField!
-    @IBOutlet weak var pass2Label: UITextField!
-    
     
     //MARK: Actions
     @IBAction func registerButton(_ sender: Any) {
@@ -56,5 +54,6 @@ class RegisterViewController: UIViewController {
         
         
     }
+    
 
 }

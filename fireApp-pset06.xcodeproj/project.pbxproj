@@ -14,7 +14,6 @@
 		2842277F1ECDC05F0060B064 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2842277E1ECDC05F0060B064 /* RegisterViewController.swift */; };
 		284227821ECDCA170060B064 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 284227801ECDCA170060B064 /* Main.storyboard */; };
 		284227841ECE18600060B064 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284227831ECE18600060B064 /* MessageViewController.swift */; };
-		284227861ECE19FA0060B064 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284227851ECE19FA0060B064 /* Help.swift */; };
 		28860F761ED430CF00141D8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28860F751ED430CF00141D8B /* GoogleService-Info.plist */; };
 		D8C03626B7609EBFB44CCAC7 /* Pods_fireApp_pset06.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74D3676EB71F12BE688E2C37 /* Pods_fireApp_pset06.framework */; };
 /* End PBXBuildFile section */
@@ -29,7 +28,6 @@
 		2842277E1ECDC05F0060B064 /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		284227811ECDCA170060B064 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		284227831ECE18600060B064 /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
-		284227851ECE19FA0060B064 /* Help.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		28860F751ED430CF00141D8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		74D3676EB71F12BE688E2C37 /* Pods_fireApp_pset06.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fireApp_pset06.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B5D5965AEBAA6433419B450 /* Pods-fireApp-pset06.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fireApp-pset06.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fireApp-pset06/Pods-fireApp-pset06.debug.xcconfig"; sourceTree = "<group>"; };
@@ -71,7 +69,6 @@
 			children = (
 				281A9FD41ECCD93D00F87E1A /* AppDelegate.swift */,
 				2842277D1ECDA8DF0060B064 /* ViewControllers */,
-				28F461151ECF721F00229BE9 /* Classes */,
 				284227801ECDCA170060B064 /* Main.storyboard */,
 				281A9FDD1ECCD93D00F87E1A /* LaunchScreen.storyboard */,
 				281A9FDB1ECCD93D00F87E1A /* Assets.xcassets */,
@@ -89,14 +86,6 @@
 				2842277E1ECDC05F0060B064 /* RegisterViewController.swift */,
 			);
 			name = ViewControllers;
-			sourceTree = "<group>";
-		};
-		28F461151ECF721F00229BE9 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				284227851ECE19FA0060B064 /* Help.swift */,
-			);
-			name = Classes;
 			sourceTree = "<group>";
 		};
 		67C3DAD24E0F6BDAEC98B2FE /* Frameworks */ = {
@@ -243,7 +232,6 @@
 			files = (
 				2842277F1ECDC05F0060B064 /* RegisterViewController.swift in Sources */,
 				281A9FD71ECCD93D00F87E1A /* LoginViewController.swift in Sources */,
-				284227861ECE19FA0060B064 /* Help.swift in Sources */,
 				284227841ECE18600060B064 /* MessageViewController.swift in Sources */,
 				281A9FD51ECCD93D00F87E1A /* AppDelegate.swift in Sources */,
 			);

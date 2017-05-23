@@ -36,12 +36,11 @@ class MessageViewController: JSQMessagesViewController {
                     self.senderDisplayName = user["username"] as? String
                     self.senderId = userId
                     self.navigationItem.title = self.senderDisplayName
-                } else {
-                    // something error
                 }
+                
             })
             
-            // if the user is not logedin send him to the loginscreen
+        // if the user is not logedin send user to the loginscreen
         } else {
             performSegue(withIdentifier: "toLogin", sender: nil)
         }
@@ -49,20 +48,7 @@ class MessageViewController: JSQMessagesViewController {
     }
     
     
-    /*
-     This check if a user is login or not. 
-     If the user is login it returns true.
-     If no user is login it returns false.
-    */
-    func checkLoginState() -> Bool {
-        
-        if FIRAuth.auth()?.currentUser?.uid == nil {
-            return false
-        }
-        return true
-    }
-    
-    // MARK: JSQMessage actions
+    // MARK: JSQMessage functions
     
     // displays a picture next to the message text.
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
@@ -104,7 +90,7 @@ class MessageViewController: JSQMessagesViewController {
         // saving the message at the reference location
         reference.updateChildValues(message)
         
-        
+    
         finishSendingMessage(animated: true)
     }
     
@@ -153,5 +139,19 @@ class MessageViewController: JSQMessagesViewController {
             self.collectionView.reloadData()
         })
     }
+    
+    /*
+     This check if a user is login or not.
+     If the user is login it returns true.
+     If no user is login it returns false.
+     */
+    func checkLoginState() -> Bool {
+        
+        if FIRAuth.auth()?.currentUser?.uid == nil {
+            return false
+        }
+        return true
+    }
 
+    
 }

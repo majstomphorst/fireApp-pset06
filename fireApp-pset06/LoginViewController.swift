@@ -15,17 +15,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailLabel: UITextField!
     @IBOutlet weak var passwordLabel: UITextField!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
-        // Do any additional setup after loading the view, typically from a nib.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // this function privodes a link to RegisterVC to go back with a slide out animation
     @IBAction func returnToLogin(segue: UIStoryboardSegue) {}
     
@@ -41,7 +30,6 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "backToMessage", sender: nil)
             }
             
-            Help.status()
         }
     
         
