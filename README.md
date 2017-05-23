@@ -16,7 +16,7 @@ An awesome cross-platform chatapp. There is one chatroom where both IOS and Andr
 - Dan Leonard ([**@macmedan**](https://github.com/macmedan))
 
 ### Inconsistency in naming scheme.
-There is some inconsistency white the naming scheme
+There is some inconsistency with the naming scheme
 the terms `username` and `displayname` are something used interchangeably.
 Reasons:<br/>
 Together with the Android developer we decided on a fireDatabase scheme.<br/>
