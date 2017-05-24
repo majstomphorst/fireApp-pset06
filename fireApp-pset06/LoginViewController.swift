@@ -15,18 +15,16 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailLabel: UITextField!
     @IBOutlet weak var passwordLabel: UITextField!
     
-    // privodes a link to RegisterVC so that a unwind action can be called
-    @IBAction func returnToLogin(segue: UIStoryboardSegue) {}
-    
     //Mark: - actions
+    
+    // If the user pressed the loginbutton
     @IBAction func loginButton(_ sender: Any) {
         
         // getting data from user
         let email: String = emailLabel.text!
         let password: String = passwordLabel.text!
         
-        
-        // Signin the user in to there account with the information provided
+        // signin the user in to there account with the information provided
         FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
             if error != nil {
                 
@@ -37,12 +35,13 @@ class LoginViewController: UIViewController {
                 // when de user is signin the user is send to the messages view
                 self.performSegue(withIdentifier: "backToMessage", sender: nil)
             }
-            
         }
-    
         
     }
-
+    
+    // privodes a link to RegisterVC so that a unwind action can be called
+    @IBAction func returnToLogin(segue: UIStoryboardSegue) {}
+    
 
 }
 

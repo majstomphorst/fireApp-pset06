@@ -12,24 +12,29 @@ import JSQMessagesViewController
 
 class MessageViewController: JSQMessagesViewController {
     
-    // a variable to store messages in the firebase
+    // a variable to store messages from the firebase
     var messages = [JSQMessage]()
     
     override func viewWillAppear(_ animated: Bool) {
         
-        // hides the "add attachment" button from te UI
+        // hides the "add attachment" button from the UI
         self.inputToolbar.contentView.leftBarButtonItem = nil
         
-        // this check if a user is login or not
-        // gets the userId for the currently logedin user
+        // this check if a user is login or not and get the userId
         if let userId = FIRAuth.auth()?.currentUser?.uid {
            
-            // Reads the user's information by the userId
-            FIRDatabase.database().reference().child("users").child(userId).observeSingleEvent(of: .value, with: { (snapshot) in
+            // Reads the user's information by the userId (a single time)
+            FIRDatabase.database().reference().child("users").child(userId).observeSingleEvent(of: .value, with: {
+                (snapshot) in
                 
+                // converts the snapshot to a nsdictionary
                 if let user = snapshot.value as? NSDictionary {
+                    
+                    // send the username to JSQMessages
                     self.senderDisplayName = user["username"] as? String
+                    // send the userId to JSQMessages as senerId
                     self.senderId = userId
+                    // Displays the username in the navigationbar (aesthetic)
                     self.navigationItem.title = self.senderDisplayName
                 }
                 
@@ -48,7 +53,7 @@ class MessageViewController: JSQMessagesViewController {
     
     // MARK: - JSQMessage functions
     
-    // displays a picture next to the message text.
+    // displays a picture next to the message text
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
         return JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"chatBubble"), diameter: 30)
     }
@@ -76,7 +81,9 @@ class MessageViewController: JSQMessagesViewController {
         return messages[indexPath.item]
     }
     
-    // when sendbuttons is pressed. ...............
+    // MARK: - Actions
+    
+    // when sendbuttons is pressed
     override func didPressSend(_ button: UIButton, withMessageText text: String, senderId: String, senderDisplayName: String, date: Date) {
         
         // creating a reference to firebase where the message info is to be saved
@@ -85,20 +92,16 @@ class MessageViewController: JSQMessagesViewController {
         // crating a dictionary with al de message information
         let message = ["text" : text, "username" : senderDisplayName, "senderId" : senderId]
         
-        // saving the message at the reference location
+        // saving the message at the reference location (in Firbase)
         reference.updateChildValues(message)
         
         // empty's the inputfield
         finishSendingMessage(animated: true)
         
+        // scroll down to get the message in view
         scrollToBottom(animated: true)
     }
     
-    
-    // MARK: - Actions
-    
-    // creates a segue back this is needed to make the slide down animations (unwinde)
-    @IBAction func returnToMessage(segue: UIStoryboardSegue) {}
     
     // if the logout button is pressed logout and return to the login page
     @IBAction func logOut(_ sender: Any) {
@@ -111,13 +114,18 @@ class MessageViewController: JSQMessagesViewController {
             // will stop all observers
             FIRDatabase.database().reference().removeAllObservers()
             
+            // sends user to login pages
             self.performSegue(withIdentifier: "toLogin", sender: nil)
-            
+        
+        // is error this send a alert to the user with the reason why
         } catch {
             alertUser(title: "logout went wrong", message: error.localizedDescription)
         }
         
     }
+    
+    // creates a segue back this is needed to make the slide down animations (unwinde)
+    @IBAction func returnToMessage(segue: UIStoryboardSegue) {}
     
     // MARK: - Functions
     
