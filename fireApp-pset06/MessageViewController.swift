@@ -76,7 +76,7 @@ class MessageViewController: JSQMessagesViewController {
         return cell
     }
     
-    // returns the messages text with is displayd inside the cell with is in the bubble
+    // returns the messages text which is displayd inside the cell which is in the bubble
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
         return messages[indexPath.item]
     }
@@ -89,7 +89,7 @@ class MessageViewController: JSQMessagesViewController {
         // creating a reference to firebase where the message info is to be saved
         let reference = FIRDatabase.database().reference().child("messages").childByAutoId()
         
-        // crating a dictionary with al de message information
+        // crating a dictionary with al the message information
         let message = ["text" : text, "username" : senderDisplayName, "senderId" : senderId]
         
         // saving the message at the reference location (in Firbase)
@@ -117,24 +117,25 @@ class MessageViewController: JSQMessagesViewController {
             // sends user to login pages
             self.performSegue(withIdentifier: "toLogin", sender: nil)
         
-        // is error this send a alert to the user with the reason why
+        // if error this send a alert to the user with the reason why
         } catch {
             alertUser(title: "logout went wrong", message: error.localizedDescription)
         }
         
     }
     
-    // creates a segue back this is needed to make the slide down animations (unwinde)
+    /// creates a segue back this is needed to make the slide down animations (unwinde)
     @IBAction func returnToMessage(segue: UIStoryboardSegue) {}
     
     // MARK: - Functions
     
     /*
-     This functions read all messages from the Firbaseands, stores it in de "messages" variable of type "JSQMesage".
+     This functions read all messages from the Firdatabase, stores it in de "messages" variable of type "JSQMesage".
      When its done it reloads the messages view (to display the messages).
     */
     func readMessages() {
-        // getting al "messages" data!
+        
+        // getting al "messages" data
         FIRDatabase.database().reference().child("messages").observe(.childAdded, with: { (snapshot) in
             
             // interpeting the made "snapshot" as a dictionary
