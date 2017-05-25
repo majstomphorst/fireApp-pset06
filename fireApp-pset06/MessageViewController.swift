@@ -21,10 +21,10 @@ class MessageViewController: JSQMessagesViewController {
         self.inputToolbar.contentView.leftBarButtonItem = nil
         
         // this check if a user is login or not and get the userId
-        if let userId = FIRAuth.auth()?.currentUser?.uid {
+        if let userId = Auth.auth().currentUser?.uid {
            
             // Reads the user's information by the userId
-            FIRDatabase.database().reference().child("users").child(userId).observeSingleEvent(of: .value, with: {
+            Database.database().reference().child("users").child(userId).observeSingleEvent(of: .value, with: {
                 (snapshot) in
                 
                 // converts the snapshot to a nsdictionary
@@ -83,7 +83,7 @@ class MessageViewController: JSQMessagesViewController {
     override func didPressSend(_ button: UIButton, withMessageText text: String, senderId: String, senderDisplayName: String, date: Date) {
         
         // creating a reference to firebase where the message info is to be saved
-        let reference = FIRDatabase.database().reference().child("messages").childByAutoId()
+        let reference = Database.database().reference().child("messages").childByAutoId()
         
         // crating a dictionary with al the message information
         let message = ["text" : text, "username" : senderDisplayName, "senderId" : senderId]
@@ -104,13 +104,13 @@ class MessageViewController: JSQMessagesViewController {
     // if the logout button is pressed logout and return to the login page
     @IBAction func signOut(_ sender: Any) {
         do {
-            try FIRAuth.auth()?.signOut()
+            try Auth.auth().signOut()
             
             // if the user is logout clear temporary storage
             messages = [JSQMessage]()
             
             // will stop all observers
-            FIRDatabase.database().reference().removeAllObservers()
+            Database.database().reference().removeAllObservers()
             
             // sends user to login pages
             self.performSegue(withIdentifier: "toLogin", sender: nil)
@@ -135,7 +135,7 @@ class MessageViewController: JSQMessagesViewController {
     func readMessages() {
         
         // getting al "messages" data
-        FIRDatabase.database().reference().child("messages").observe(.childAdded, with: { (snapshot) in
+        Database.database().reference().child("messages").observe(.childAdded, with: { (snapshot) in
             
             // interpeting the made "snapshot" as a dictionary
             if let messages = snapshot.value as? NSDictionary {

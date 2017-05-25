@@ -28,7 +28,7 @@ class RegisterViewController: UIViewController {
         let password = passLabel.text!
         
         // this creates a user with the information in the register form
-        FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { ( user, error) in
+        Auth.auth().createUser(withEmail: email, password: password, completion: { ( user, error) in
             
             // if there is an error while creating the user this wil display a message and tel the user the reason
             if error != nil {
@@ -42,7 +42,7 @@ class RegisterViewController: UIViewController {
             }
             
             // save user
-            let reference = FIRDatabase.database().reference().child("users").child(userId)
+            let reference = Database.database().reference().child("users").child(userId)
             
             let values = ["username": displayName, "email": email, "password": password]
             

@@ -26,7 +26,7 @@ class LoginViewController: UIViewController {
         let password: String = passwordLabel.text!
         
         // signin the user in to there account with the information provided
-        FIRAuth.auth()?.signIn(withEmail: email, password: password) { (user, error) in
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error != nil {
                 
                 // if a error happend this wil tell the user about it
