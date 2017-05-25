@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2812766A1ED442BF004465EB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 281276691ED442BF004465EB /* GoogleService-Info.plist */; };
 		281A9FD51ECCD93D00F87E1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281A9FD41ECCD93D00F87E1A /* AppDelegate.swift */; };
-		281A9FD71ECCD93D00F87E1A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281A9FD61ECCD93D00F87E1A /* LoginViewController.swift */; };
+		281A9FD71ECCD93D00F87E1A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 281A9FD61ECCD93D00F87E1A /* SignInViewController.swift */; };
 		281A9FDC1ECCD93D00F87E1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 281A9FDB1ECCD93D00F87E1A /* Assets.xcassets */; };
 		281A9FDF1ECCD93D00F87E1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 281A9FDD1ECCD93D00F87E1A /* LaunchScreen.storyboard */; };
 		2842277F1ECDC05F0060B064 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2842277E1ECDC05F0060B064 /* RegisterViewController.swift */; };
@@ -23,7 +23,7 @@
 		281276691ED442BF004465EB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		281A9FD11ECCD93D00F87E1A /* fireApp-pset06.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fireApp-pset06.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		281A9FD41ECCD93D00F87E1A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		281A9FD61ECCD93D00F87E1A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		281A9FD61ECCD93D00F87E1A /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		281A9FDB1ECCD93D00F87E1A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		281A9FDE1ECCD93D00F87E1A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		281A9FE01ECCD93D00F87E1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -85,7 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				284227831ECE18600060B064 /* MessageViewController.swift */,
-				281A9FD61ECCD93D00F87E1A /* LoginViewController.swift */,
+				281A9FD61ECCD93D00F87E1A /* SignInViewController.swift */,
 				2842277E1ECDC05F0060B064 /* RegisterViewController.swift */,
 			);
 			name = ViewControllers;
@@ -234,7 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2842277F1ECDC05F0060B064 /* RegisterViewController.swift in Sources */,
-				281A9FD71ECCD93D00F87E1A /* LoginViewController.swift in Sources */,
+				281A9FD71ECCD93D00F87E1A /* SignInViewController.swift in Sources */,
 				284227841ECE18600060B064 /* MessageViewController.swift in Sources */,
 				2883770D1ED445E00078AE8D /* ViewController+Error.swift in Sources */,
 				281A9FD51ECCD93D00F87E1A /* AppDelegate.swift in Sources */,
