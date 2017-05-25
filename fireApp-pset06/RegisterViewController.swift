@@ -16,6 +16,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var emailLabel: UITextField!
     @IBOutlet weak var passLabel: UITextField!
     
+    
     //MARK: - Actions
     
     // if the user pressed register
@@ -41,24 +42,21 @@ class RegisterViewController: UIViewController {
             }
             
             // save user
-            let ref = FIRDatabase.database().reference().child("users").child(userId)
+            let reference = FIRDatabase.database().reference().child("users").child(userId)
             
-            let values = ["username" : displayName, "email" : email, "password" : password]
+            let values = ["username": displayName, "email": email, "password": password]
             
-            ref.updateChildValues(values, withCompletionBlock: { (error, ref) in
+            reference.updateChildValues(values, withCompletionBlock: { (error, ref) in
                 
                 if error != nil {
                     self.alertUser(title: "Saving user detials went wrong", message: error!.localizedDescription)
                     return
                 }
+                
                 // when the user creation succeded send user to message view
                 self.performSegue(withIdentifier: "backToMessage", sender: nil)
-                
             })
-            
         })
-        
-        
     }
     
 

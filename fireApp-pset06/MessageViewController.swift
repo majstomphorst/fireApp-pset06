@@ -12,18 +12,18 @@ import JSQMessagesViewController
 
 class MessageViewController: JSQMessagesViewController {
     
-    // a variable to store messages from the firebase
+    // a variable to store messages from firebase(database)
     var messages = [JSQMessage]()
     
     override func viewWillAppear(_ animated: Bool) {
         
-        // hides the "add attachment" button from the UI
+        // hides the add attachment button from the UI
         self.inputToolbar.contentView.leftBarButtonItem = nil
         
         // this check if a user is login or not and get the userId
         if let userId = FIRAuth.auth()?.currentUser?.uid {
            
-            // Reads the user's information by the userId (a single time)
+            // Reads the user's information by the userId
             FIRDatabase.database().reference().child("users").child(userId).observeSingleEvent(of: .value, with: {
                 (snapshot) in
                 
@@ -38,18 +38,16 @@ class MessageViewController: JSQMessagesViewController {
                     self.navigationItem.title = self.senderDisplayName
                 }
                 
-                // reads messages from Firbase and stores it in: var messages
+                // reads messages from Firbase and stores it in "messages"
                 self.readMessages()
-                
             })
             
         // if the user is not logedin send user to the loginscreen
         } else {
-           
-            performSegue(withIdentifier: "toLogin", sender: nil)
+            performSegue(withIdentifier:"toLogin", sender: nil)
         }
-        
     }
+    
     
     // MARK: - JSQMessage functions
     
@@ -81,8 +79,6 @@ class MessageViewController: JSQMessagesViewController {
         return messages[indexPath.item]
     }
     
-    // MARK: - Actions
-    
     // when sendbuttons is pressed
     override func didPressSend(_ button: UIButton, withMessageText text: String, senderId: String, senderDisplayName: String, date: Date) {
         
@@ -103,8 +99,10 @@ class MessageViewController: JSQMessagesViewController {
     }
     
     
+    // MARK: - Actions
+    
     // if the logout button is pressed logout and return to the login page
-    @IBAction func logOut(_ sender: Any) {
+    @IBAction func signOut(_ sender: Any) {
         do {
             try FIRAuth.auth()?.signOut()
             
@@ -116,16 +114,17 @@ class MessageViewController: JSQMessagesViewController {
             
             // sends user to login pages
             self.performSegue(withIdentifier: "toLogin", sender: nil)
-        
-        // if error this send a alert to the user with the reason why
+            
+            // if error this send a alert to the user with the reason why
         } catch {
             alertUser(title: "logout went wrong", message: error.localizedDescription)
         }
-        
     }
     
-    /// creates a segue back this is needed to make the slide down animations (unwinde)
+    
+    // privodes a link to MessageViewController so that an unwind action can be called
     @IBAction func returnToMessage(segue: UIStoryboardSegue) {}
+    
     
     // MARK: - Functions
     
@@ -157,6 +156,4 @@ class MessageViewController: JSQMessagesViewController {
     }
     
 
-
-    
 }

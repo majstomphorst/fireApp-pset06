@@ -14,8 +14,9 @@ class LoginViewController: UIViewController {
     //MARK: - outlets
     @IBOutlet weak var emailLabel: UITextField!
     @IBOutlet weak var passwordLabel: UITextField!
-    
-    //Mark: - actions
+
+
+    //MARK: - actions
     
     // If the user pressed the loginbutton
     @IBAction func loginButton(_ sender: Any) {
@@ -36,10 +37,10 @@ class LoginViewController: UIViewController {
                 self.performSegue(withIdentifier: "backToMessage", sender: nil)
             }
         }
-        
+
     }
     
-    // privodes a link to RegisterVC so that a unwind action can be called
+    // privodes a link to RegisterViewController so that a unwind action can be called
     @IBAction func returnToLogin(segue: UIStoryboardSegue) {}
     
 
