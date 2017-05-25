@@ -1,5 +1,6 @@
 # fireApp-pset06
-### App studio - pset06 - 11436727 - Maxim Stomphorst
+### Readme - App studio - pset06 - 11436727 - Maxim Stomphorst
+
 ![BCHcompliance](https://bettercodehub.com/edge/badge/majstomphorst/fireApp-pset06?branch=master)
 
 # Instructions

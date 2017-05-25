@@ -11,6 +11,10 @@ import UIKit
 
 extension UIViewController {
     
+    /*
+     This creates a alert message for the user to give them feedback to tel them,
+     what is happening in the background especially our messages
+    */
     func alertUser(title: String, message: String) {
         
         // create the alert

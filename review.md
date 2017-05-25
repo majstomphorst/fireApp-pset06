@@ -1,4 +1,5 @@
-# Code review - fireApp-pset06
+# fireApp-pset06
+### Review - App studio - pset06 - 11436727 - Maxim Stomphorst
 
 | Levels          | Mark|
 |:---------------:|:---:|
