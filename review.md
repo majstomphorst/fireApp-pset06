@@ -33,19 +33,19 @@ extension UIViewController {
     }
 }
 ```
-2. There is Some inconsistency with the comment style
+2. There is Some inconsistency with the comment style.
 ```Swift
 /// creates a segue back this is needed to make the slide down animations (unwinde)
-   @IBAction func returnToMessage(segue: UIStoryboardSegue) {
+   @IBAction func returnToMessage(segue: UIStoryboardSegue) {}
+
+/*
+This functions read all messages from the Firdatabase, stores it in de "messages" variable of type "JSQMesage".
+When its done it reloads the messages view (to display the messages).
+*/
+func readMessages() {}
 ```
-```Swift
-    /*
-    This functions read all messages from the Firdatabase, stores it in de "messages" variable of type "JSQMesage".
-    When its done it reloads the messages view (to display the messages).
-   */
-   func readMessages() {
-```
-3. There is some inconsistency with the naming of variables<br>
+
+3. There is some inconsistency with the naming of variables.<br>
 Variable names `username` and `displayname` Are used interchangeably.<br>
 In the "README" i already explained the reasons.
 
@@ -53,13 +53,22 @@ In the "README" i already explained the reasons.
 Its located under `//MARK: - Action`. But its a part of `JSQMessage functions`.
 So is can be located in both places. The advice was to places under `JSQMessage functions`.
 
-5. There are a few spelling mistakes commonts<br>
+5. There are a few spelling mistakes commontsn<br>
 This is probably due to my dyslexia.
 
-6. There is some inconsistency with the naming of variables<br>
+6. There is some inconsistency with the naming of variables.<br>
 Because `JSQMessage` uses the keyword: `signOut` I should do the same in my code its `logOut`.
 
-7. Consistency
+7. Consistency.
 In comments sometimes refer to variables With "randomVariableName" but not always.
 
-8.
+8. UIViewControllerExtension name.<br>
+I have extended the UIViewController with an alert function. But it's called `ViewController+Error.swift` This was seen as confusing.
+
+9. Create a variable once.<br>
+In some places a reference variable is created. But this can be done once and the variable can be reused.
+```Swift
+let reffrence = FIRDatabase.database().reference().child("users").child(userId)
+```
+
+10. The JSQMessage API is not clearly documented what it does and how it works.
