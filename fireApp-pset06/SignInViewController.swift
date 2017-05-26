@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  SignInViewController.swift
 //  fireApp-pset06
 //
 //  Created by Maxim Stomphorst on 17/05/2017.
@@ -9,12 +9,11 @@
 import UIKit
 import Firebase
 
-class LoginViewController: UIViewController {
+class SignInViewController: UIViewController {
 
     //MARK: - outlets
     @IBOutlet weak var emailLabel: UITextField!
     @IBOutlet weak var passwordLabel: UITextField!
-
 
     //MARK: - actions
     

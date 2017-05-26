@@ -15,7 +15,7 @@
         <!--LoginVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="LoginVC" title="LoginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="LoginViewController" customModule="fireApp_pset06" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="signInVC" title="LoginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SignInViewController" customModule="fireApp_pset06" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -132,7 +132,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="toLogin" modalPresentationStyle="pageSheet" modalTransitionStyle="coverVertical" id="nQe-yf-tC1"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="toSignIn" modalPresentationStyle="pageSheet" modalTransitionStyle="coverVertical" id="nQe-yf-tC1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vDL-uO-Hje" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -237,9 +237,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Register login" id="f82-6O-Cg9"/>
                     <connections>
-                        <outlet property="emailLabel" destination="4fx-ma-Jm2" id="unu-dJ-MRA"/>
-                        <outlet property="nameLabel" destination="4wr-Ec-PnW" id="jEb-bF-Dae"/>
-                        <outlet property="passLabel" destination="BTc-8Z-U99" id="wTd-Lc-leo"/>
+                        <outlet property="emailField" destination="4fx-ma-Jm2" id="70A-Hx-For"/>
+                        <outlet property="nameField" destination="4wr-Ec-PnW" id="UKE-v1-tcN"/>
+                        <outlet property="passwordField" destination="BTc-8Z-U99" id="P0P-A7-4W4"/>
                         <segue destination="K7a-BX-ucj" kind="unwind" identifier="backToMessage" unwindAction="returnToMessageWithSegue:" id="xGi-Pz-prm"/>
                     </connections>
                 </viewController>

@@ -12,9 +12,9 @@ import Firebase
 class RegisterViewController: UIViewController {
 
     // Mark: - Outlets
-    @IBOutlet weak var nameLabel: UITextField!
-    @IBOutlet weak var emailLabel: UITextField!
-    @IBOutlet weak var passLabel: UITextField!
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var passwordField: UITextField!
     
     
     //MARK: - Actions
@@ -23,16 +23,18 @@ class RegisterViewController: UIViewController {
     @IBAction func registerButton(_ sender: Any) {
         
         // collect information form form
-        let displayName = nameLabel.text!
-        let email = emailLabel.text!
-        let password = passLabel.text!
+        let displayName = nameField.text!
+        let email = emailField.text!
+        let password = passwordField.text!
         
         // this creates a user with the information in the register form
-        Auth.auth().createUser(withEmail: email, password: password, completion: { ( user, error) in
+        Auth.auth().createUser(withEmail: email, password: password, completion: {
+            (user, error) in
             
-            // if there is an error while creating the user this wil display a message and tel the user the reason
+            // if error display alert with error information
             if error != nil {
-                self.alertUser(title: "Creating user went wrong", message: error!.localizedDescription)
+                self.alertUser(title: "Creating user went wrong",
+                               message: error!.localizedDescription)
                 return
             }
             
@@ -41,15 +43,20 @@ class RegisterViewController: UIViewController {
                 return
             }
             
-            // save user
-            let reference = Database.database().reference().child("users").child(userId)
+            // creating a reference to where info is stored
+            let reference = Database.database().reference().child("users")
+                .child(userId)
             
-            let values = ["username": displayName, "email": email, "password": password]
+            // create a dictionary with the information needed for registration
+            let userInfo = ["username": displayName, "email": email, "password": password]
             
-            reference.updateChildValues(values, withCompletionBlock: { (error, ref) in
+            // creats child with value userId and store userInfo under it
+            reference.updateChildValues(userInfo, withCompletionBlock: {
+                (error, reffrence) in
                 
                 if error != nil {
-                    self.alertUser(title: "Saving user detials went wrong", message: error!.localizedDescription)
+                    self.alertUser(title: "Saving user detials error",
+                                   message: error!.localizedDescription)
                     return
                 }
                 

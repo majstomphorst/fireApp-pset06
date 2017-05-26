@@ -23,9 +23,10 @@ class MessageViewController: JSQMessagesViewController {
         // this check if a user is login or not and get the userId
         if let userId = Auth.auth().currentUser?.uid {
            
-            // Reads the user's information by the userId
-            Database.database().reference().child("users").child(userId).observeSingleEvent(of: .value, with: {
-                (snapshot) in
+            // Reads the user's information by the user id
+            Database.database().reference().child("users").child(userId)
+                .observeSingleEvent(of: .value, with:
+                    { (snapshot) in
                 
                 // converts the snapshot to a nsdictionary
                 if let user = snapshot.value as? NSDictionary {
@@ -44,7 +45,7 @@ class MessageViewController: JSQMessagesViewController {
             
         // if the user is not logedin send user to the loginscreen
         } else {
-            performSegue(withIdentifier:"toLogin", sender: nil)
+            performSegue(withIdentifier:"toSignIn", sender: nil)
         }
     }
     
@@ -52,41 +53,55 @@ class MessageViewController: JSQMessagesViewController {
     // MARK: - JSQMessage functions
     
     // displays a picture next to the message text
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!) -> JSQMessageAvatarImageDataSource! {
-        return JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(named:"chatBubble"), diameter: 30)
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAt indexPath: IndexPath!)
+        -> JSQMessageAvatarImageDataSource! {
+        return JSQMessagesAvatarImageFactory
+                .avatarImage(with: UIImage(named:"chatBubble"), diameter: 30)
     }
     
     // creates a bubbel to display the message
-    override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAt indexPath: IndexPath!) -> JSQMessageBubbleImageDataSource! {
+    override func collectionView(_ collectionView: JSQMessagesCollectionView!,messageBubbleImageDataForItemAt indexPath: IndexPath!)
+        -> JSQMessageBubbleImageDataSource! {
+            
+        // creats a instance from JSQMessages bubblefactory
         let bubbleFactory = JSQMessagesBubbleImageFactory()
         
         return bubbleFactory?.outgoingMessagesBubbleImage(with: UIColor.blue)
     }
     
     // returns the number of messages which need to be displayed
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
     
     // returns the value witch is stored inside the bubble
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath)
+                                                -> UICollectionViewCell {
+            
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
+            
         return cell
     }
     
-    // returns the messages text which is displayd inside the cell which is in the bubble
+    // returns the messages text which is displayd inside the cell
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
+        
         return messages[indexPath.item]
     }
     
     // when sendbuttons is pressed
-    override func didPressSend(_ button: UIButton, withMessageText text: String, senderId: String, senderDisplayName: String, date: Date) {
+    override func didPressSend(_ button: UIButton, withMessageText text: String,
+                               senderId: String, senderDisplayName: String, date: Date) {
         
-        // creating a reference to firebase where the message info is to be saved
-        let reference = Database.database().reference().child("messages").childByAutoId()
+        // create reference to firebase where the message info is to be saved
+        let reference = Database.database().reference().child("messages")
+            .childByAutoId()
         
         // crating a dictionary with al the message information
-        let message = ["text" : text, "username" : senderDisplayName, "senderId" : senderId]
+        let message = ["text": text, "username": senderDisplayName,
+                       "senderId": senderId]
         
         // saving the message at the reference location (in Firbase)
         reference.updateChildValues(message)
@@ -113,7 +128,7 @@ class MessageViewController: JSQMessagesViewController {
             Database.database().reference().removeAllObservers()
             
             // sends user to login pages
-            self.performSegue(withIdentifier: "toLogin", sender: nil)
+            self.performSegue(withIdentifier: "toSignIn", sender: nil)
             
             // if error this send a alert to the user with the reason why
         } catch {
@@ -121,8 +136,7 @@ class MessageViewController: JSQMessagesViewController {
         }
     }
     
-    
-    // privodes a link to MessageViewController so that an unwind action can be called
+    // a link to MessageViewController to call a unwind action
     @IBAction func returnToMessage(segue: UIStoryboardSegue) {}
     
     
