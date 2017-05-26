@@ -1,15 +1,14 @@
 # fireApp-pset06
 ### Audit - App studio - pset06 - 11436727 - Maxim Stomphorst
 
-As you can see in the screenshots below the better code hub gives me 3 suggestions<br>
+As shown in the screenshots below, the better code hub (Better Code Hub)gave me three suggestions.<br>
 - Parameters: 5 Lines of code: 7.
 ```
 Keep Unit Interfaces Small:
   MessageViewController.​didPressSend(UIButton,​String,​String,​String,​Date)
       starts at line 83 in fireApp-pset06/​MessageViewController.​swift
 ```
-I can't change these line of code without significant changes to the structure.
-Because the complaint is about the 5 Parameters, this is caused by the `JSQMesage` API and the function i'm calling.
+I can't change these lines of code without making significant changes to the structure. Because the complaint is about the 5 parameters, this is caused by the `JSQMesage` API and the function i'm calling.
 
 - Units of code to long.
 ```
@@ -19,13 +18,11 @@ Write Short Units of Code:
   — MessageViewController.​viewWillAppear(Bool)
       starts at line 18 in fireApp-pset06/​MessageViewController.​swift
 ```
-Better code hub wants at most 15 lines of code.<br>
-The first complaint is vaild its a bit long. I could create a function to ride the data to the firebase database but i down't see the point.
-In my opinion its clear how it works and a function Won't significantly improve the code.
+Better code hub wants at most 15 lines of code.
+The first complaint is valid, because the code is in fact a bit (too) long. I could create a function to write the data to the firebase database but I did not see the point. In my opinion it is clear how it(the code) works and a function  would not significantly improve the code.
 
-Better code hub want at most 15 lines of code.<br>
-The second complaint is about 16 lines of Code.
-
+Better code hub wants requires at most 15 lines of code.
+The second complaint is about 16 lines of Code
 
 # Screenshots
 ## Screenshot - 01 - audit task list
