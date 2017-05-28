@@ -12,7 +12,7 @@ import JSQMessagesViewController
 
 class MessageViewController: JSQMessagesViewController {
     
-    // a variable to store messages from firebase(database)
+    // store messages from firebase(database)
     var messages = [JSQMessage]()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -23,7 +23,7 @@ class MessageViewController: JSQMessagesViewController {
         // this check if a user is login or not and get the userId
         if let userId = Auth.auth().currentUser?.uid {
            
-            // Reads the user's information by the user id
+            // reads the user's information by the user id
             Database.database().reference().child("users").child(userId)
                 .observeSingleEvent(of: .value, with:
                     { (snapshot) in
@@ -121,6 +121,7 @@ class MessageViewController: JSQMessagesViewController {
         do {
             try Auth.auth().signOut()
             
+            
             // if the user is logout clear temporary storage
             messages = [JSQMessage]()
             
@@ -144,29 +145,39 @@ class MessageViewController: JSQMessagesViewController {
     
     /*
      This functions read all messages from the Firdatabase, stores it in de "messages" variable of type "JSQMesage".
-     When its done it reloads the messages view (to display the messages).
+     It also places a observer or event lissener on the data so if the database changes this observer wil
+     update. This is done on a second thread so that the user interface doesn't doesn't lag.
+     When its done it reloads the messages view (to display the messages) on the main thread.
     */
     func readMessages() {
         
-        // getting al "messages" data
-        Database.database().reference().child("messages").observe(.childAdded, with: { (snapshot) in
+        // send the task to a second thread
+        DispatchQueue.global(qos: .userInteractive).async {
             
-            // interpeting the made "snapshot" as a dictionary
-            if let messages = snapshot.value as? NSDictionary {
+            // getting al "messages" data
+            Database.database().reference().child("messages").observe(.childAdded, with: { (snapshot) in
                 
-                // properly formating and converting the Dictionary to JSQMessage type
-                self.messages.append(JSQMessage(senderId: messages["senderId"] as? String, displayName: messages["username"] as? String, text: messages["text"] as? String))
-                
-            } else {
-                self.alertUser(title: "Reading messages went wrong", message: "No feedback provided sorry!")
-            }
-            
-            // reloading the messages view
-            self.collectionView.reloadData()
-            
-            // moving the screen down so that the last message is readble
-            self.scrollToBottom(animated: true)
-        })
+                // interpeting the made "snapshot" as a dictionary
+                if let messages = snapshot.value as? NSDictionary {
+                    
+                    // properly formating and converting the Dictionary to JSQMessage type
+                    self.messages.append(JSQMessage(senderId: messages["senderId"] as? String, displayName: messages["username"] as? String, text: messages["text"] as? String))
+                    
+                    
+                    DispatchQueue.main.async {
+                        
+                        // reloading the messages view
+                        self.collectionView.reloadData()
+                        
+                        // moving the screen down so that the last message is readble
+                        self.scrollToBottom(animated: true)
+                    }
+                    
+                } else {
+                    self.alertUser(title: "Reading messages went wrong", message: "No feedback provided sorry!")
+                }
+            })
+        }
     }
     
 
