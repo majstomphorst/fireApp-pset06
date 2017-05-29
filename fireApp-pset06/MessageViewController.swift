@@ -22,13 +22,18 @@ import JSQMessagesViewController
  -- Loads the bubble view, and hides the attachment button (this function is not used).
  
  - Prepares the JSQMessageViewController:
- -- Sends al necessary data to JSQMessageViewController.
+ -- Sends all necessary data to JSQMessageViewController.
  --- A UserPicture, Displayname, username, userid.
  
  - It places a observer or event lissener on a secondary thread.
  -- Loads the new text messages if received. 
  -- scrolls down the pages so that the text message is in view.
  
+ - It allows the user te sings out.
+ -- It sings the user out of firebase.
+ -- It empty's the variable holding the messages information.
+ -- Send's the user back to the sign in screen.
+ -- Alerts the user if the signout faild.
  
 */
 
@@ -98,9 +103,7 @@ class MessageViewController: JSQMessagesViewController {
     }
     
     // returns the value witch is stored inside the bubble
-    override func collectionView(_ collectionView: UICollectionView,
-                                 cellForItemAt indexPath: IndexPath)
-                                                -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             
         let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as! JSQMessagesCollectionViewCell
             

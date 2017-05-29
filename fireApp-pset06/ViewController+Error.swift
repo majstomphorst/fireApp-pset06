@@ -6,6 +6,12 @@
 //  Copyright © 2017 Maxim Stomphorst. All rights reserved.
 //
 
+/*
+ This extension create's a convincent way to create alert notifiaction too alert the user
+ if any error occurs. 
+*/
+
+
 import Foundation
 import UIKit
 
