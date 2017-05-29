@@ -58,7 +58,7 @@ class RegisterViewController: UIViewController {
                 .child(userId)
             
             // create a dictionary with the information needed for registration
-            let userInfo = ["username": displayName, "email": email, "password": password]
+            let userInfo = ["username": displayName, "email": email]
             
             // creats child with value userId and store userInfo under it
             reference.updateChildValues(userInfo, withCompletionBlock: {
