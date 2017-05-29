@@ -183,7 +183,10 @@ class MessageViewController: JSQMessagesViewController {
                 if let messages = snapshot.value as? NSDictionary {
                     
                     // properly formating and converting the Dictionary to JSQMessage type
-                    self.messages.append(JSQMessage(senderId: messages["senderId"] as? String, displayName: messages["username"] as? String, text: messages["text"] as? String))
+                    self.messages.append(JSQMessage(
+                        senderId: messages["senderId"] as? String,
+                        displayName: messages["username"] as? String,
+                        text: ("\((messages["username"] as! String))\r\n\((messages["text"] as! String))")))
                     
                     
                     DispatchQueue.main.async {
