@@ -143,7 +143,6 @@ class MessageViewController: JSQMessagesViewController {
         do {
             try Auth.auth().signOut()
             
-            
             // if the user is logout clear temporary storage
             messages = [JSQMessage]()
             
@@ -186,7 +185,7 @@ class MessageViewController: JSQMessagesViewController {
                     self.messages.append(JSQMessage(
                         senderId: messages["senderId"] as? String,
                         displayName: messages["username"] as? String,
-                        text: ("\((messages["username"] as! String))\r\n\((messages["text"] as! String))")))
+                        text: ("\((messages["username"] as! String)) \n\((messages["text"] as! String))")))
                     
                     
                     DispatchQueue.main.async {
