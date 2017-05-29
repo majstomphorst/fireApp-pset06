@@ -185,8 +185,7 @@ class MessageViewController: JSQMessagesViewController {
                     self.messages.append(JSQMessage(
                         senderId: messages["senderId"] as? String,
                         displayName: messages["username"] as? String,
-                        text: ("\((messages["username"] as! String)) \n\((messages["text"] as! String))")))
-                    
+                        text: ("\((messages["username"] as! String))\n\((messages["text"] as! String))")))
                     
                     DispatchQueue.main.async {
                         
@@ -198,6 +197,8 @@ class MessageViewController: JSQMessagesViewController {
                     }
                     
                 } else {
+                    
+                    // Alerts the user that something whent wrong regarding reading the messages
                     self.alertUser(title: "Reading messages went wrong", message: "No feedback provided sorry!")
                 }
             })
