@@ -40,7 +40,8 @@ extension UIViewController {
 ```Swift
 /// creates a segue back this is needed to make the slide down animations (unwinde)
    @IBAction func returnToMessage(segue: UIStoryboardSegue) {}
-
+```
+```Swift
 /*
 This functions read all messages from the Firdatabase, stores it in de "messages" variable of type "JSQMesage".
 When its done it reloads the messages view (to display the messages).
@@ -79,3 +80,45 @@ let reffrence = FIRDatabase.database().reference().child("users").child(userId)
 ```
 
 10. It is not clearly document in the … API what the functions does and how it works
+
+### Email from Tim van Elsloo
+I did send a email to Tim asking him for advice about my stuttering UI and For general feedback.
+
+The stuttering UI.
+I was able to resolved this problem myself.
+I had to place the event observer on a second thread.
+
+But he had still some advice
+11. Place a comment above every class explaining its purpose.
+
+12. Clean up this line of code
+```Swift
+self.messages.append(JSQMessage(senderId: messages["senderId"] as? String, displayName: messages["username"] as? String, text: messages["text"] as? String))
+```
+changed to
+```Swift
+self.messages.append(JSQMessage(
+                        senderId: messages["senderId"] as? String,
+                        displayName: messages["username"] as? String,
+                        text: ("\((messages["username"] as! String))\n\((messages["text"] as! String))")))
+```
+Now the app Also display's the display name by every messages!
+
+13. Provide a better guard statement for:
+```Swift
+self.messages.append(JSQMessage(
+                        senderId: messages["senderId"] as? String,
+                        displayName: messages["username"] as? String,
+                        text: ("\((messages["username"] as! String))\n\((messages["text"] as! String))")))
+```
+
+Sadly i was not able to do this.
+
+Tim's Example:
+```
+guard let a = … as? String,
+               b = … as? String,
+	       c = … as? String {
+    return
+}
+```
