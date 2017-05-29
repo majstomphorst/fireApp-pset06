@@ -9,6 +9,16 @@
 import UIKit
 import Firebase
 
+/*
+ This class takes care of the registration form.
+ 
+ It imports the users credentials and try's to create an account on firebase.
+ It alsow registries the user's info in a secondary nood of the databes. (because of bugges)
+ 
+ If the creating of the firebase account was succesvol and the user information is stored. 
+ The user is send to the main messages vies.
+ */
+
 class RegisterViewController: UIViewController {
 
     // Mark: - Outlets

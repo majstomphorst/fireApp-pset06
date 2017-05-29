@@ -10,6 +10,28 @@ import UIKit
 import Firebase
 import JSQMessagesViewController
 
+/*
+ This class takes care of the main message view.
+ It's a JSQMessageViewController (that inherits from UIViewController),
+ so that i can use the bubblechat view that it supplies.
+ 
+ It takes care of the following tasks:
+ 
+ - It loads the UI.
+ -- Displays the users userName in the navigation bar.
+ -- Loads the bubble view, and hides the attachment button (this function is not used).
+ 
+ - Prepares the JSQMessageViewController:
+ -- Sends al necessary data to JSQMessageViewController.
+ --- A UserPicture, Displayname, username, userid.
+ 
+ - It places a observer or event lissener on a secondary thread.
+ -- Loads the new text messages if received. 
+ -- scrolls down the pages so that the text message is in view.
+ 
+ 
+*/
+
 class MessageViewController: JSQMessagesViewController {
     
     // store messages from firebase(database)

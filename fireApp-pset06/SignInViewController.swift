@@ -9,6 +9,18 @@
 import UIKit
 import Firebase
 
+/*
+ This class takes care of signing in a user,
+ and provides a why to access the registration form.
+
+ It imports the users credentials and try's to sing in the user on firebase.
+ If this fails the user is given feedback about the error.
+ 
+ If signin was succesvol the user is send to the main message view.
+ where MessageViewController takes over.
+ */
+
+
 class SignInViewController: UIViewController {
 
     //MARK: - outlets
